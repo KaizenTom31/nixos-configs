@@ -9,6 +9,15 @@
     enable = true;
     config = {
       CREATE_ADMIN = 1;
+      POLLING_SCHEDULER = "entry_frequency";
+      SCHEDULER_ENTRY_FREQUENCY_MIN_INTERVAL = 120;
+      SCHEDULER_ENTRY_FREQUENCY_MAX_INTERVAL = 2880;
+      BATCH_SIZE = 20;
+      WORKER_POOL_SIZE = 4;
+      POLLING_LIMIT_PER_HOST = 2;
+      DATABASE_MAX_CONNS = 5;
+      LOG_LEVEL = "error";
+      CLEANUP_FREQUENCY_HOURS = 48;
     };
     adminCredentialsFile = config.age.secrets.miniflux.path;
   };
@@ -22,6 +31,10 @@
     recommendedTlsSettings = true;
     recommendedProxySettings = true;
     recommendedOptimisation = true;
+
+    appendHttpConfig = ''
+      access_log off;
+    '';
     
     virtualHosts = {
       "rss.sh.tomwissing.de" = {
