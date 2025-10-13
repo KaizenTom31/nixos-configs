@@ -2,7 +2,8 @@
 
 {
   system.stateVersion = "25.05";
-  imports = [ #./hardware-configuration.nix
+  imports = [
+    #./hardware-configuration.nix
     "${inputs.nixpkgs}/nixos/modules/profiles/minimal.nix"
   ];
 
@@ -51,10 +52,5 @@
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
-  services = {
-      adguardhome.enable = true;
-  };
-  networking.firewall.allowedUDPPorts = [ 53 ];
-  networking.firewall.allowedTCPPorts = [ 53 ];
 }
 
