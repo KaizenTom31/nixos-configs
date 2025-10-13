@@ -32,6 +32,9 @@
         locations."/" = {
           proxyPass = "http://127.0.0.1:8080";
           proxyWebsockets = true; # allows live updates if needed
+          extraConfig = ''
+            add_header Alt-Svc 'h3=":443"; ma=86400';
+          '';
         };
       };
     };
