@@ -1,11 +1,7 @@
 { config, lib, pkgs, modulesPath, inputs, ... }:
 
+  
 {
-  imports = [
-    # include NixOS-WSL modules
-    <nixos-wsl/modules>
-    "${modulesPath}/profiles/minimal.nix"
-  ];
   networking.hostName = "wsl";
 
   wsl.enable = true;
@@ -16,6 +12,7 @@
     packages = with pkgs; [
       fastfetch
       pyload-ng
+      git
     ];
    };
 

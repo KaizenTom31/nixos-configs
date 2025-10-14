@@ -3,7 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    agenix.url = "github:ryantm/agenix";
+    nixos-wsl = {
+      url = "github:nix-community/nixos-wsl/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+      };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
+    };
   };
 
   outputs = { self, nixpkgs, agenix, ... } @inputs:
@@ -14,6 +22,7 @@
         specialArgs = { inherit inputs; } ;
         system = "x86_64-linux";
         modules = [
+          inputs.nixos-wsl.nixosModules.default
           agenix.nixosModules.default
           ./hosts/wsl.nix
           ./modules/common.nix
