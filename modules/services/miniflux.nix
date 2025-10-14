@@ -60,7 +60,6 @@
   security.acme.certs."sh.tomwissing.de" = {
     email = "noreply@tomwissing.de";
     domain = "*.sh.tomwissing.de";
-    dnsResolver = "8.8.8.8:53";
     dnsProvider = "cloudflare";
     environmentFile = config.age.secrets.cloudflare-dns.path;
   };
