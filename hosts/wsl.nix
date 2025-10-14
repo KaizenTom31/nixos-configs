@@ -4,6 +4,9 @@
 {
   networking.hostName = "wsl";
 
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+  nix.settings.extra-platforms = config.boot.binfmt.emulatedSystems;
+
   wsl.enable = true;
   wsl.defaultUser = "tom";
   wsl.useWindowsDriver = true;
