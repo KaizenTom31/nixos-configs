@@ -36,6 +36,12 @@
     '';
     
     virtualHosts = {
+      "_default" = {
+        default = true;
+        locations."/" = {
+          return = 444;
+        };
+      };
       "rss.sh.tomwissing.de" = {
         forceSSL = true;
         quic = true;

@@ -16,6 +16,7 @@
   networking.firewall.allowedTCPPorts = [ 53 853 ];
 
   services.nginx = {
+    enable = true;
     virtualHosts = {
       "dns.sh.tomwissing.de" = {
         forceSSL = true;
@@ -28,6 +29,9 @@
           extraConfig = ''
             add_header Alt-Svc 'h3=":443"; ma=86400';
           '';
+        };
+        locations."/" = {
+          return = 404;
         };
       };
     };
