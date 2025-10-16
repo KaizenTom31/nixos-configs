@@ -4,6 +4,7 @@
   system.stateVersion = "25.05";
   imports = [
     #./hardware-configuration.nix
+    ./wireguard.nix
     "${inputs.nixpkgs}/nixos/modules/profiles/minimal.nix"
   ];
 

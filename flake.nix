@@ -34,7 +34,7 @@
         system = "aarch64-linux";
         modules = [
           agenix.nixosModules.default
-          ./hosts/rpi3.nix
+          ./hosts/rpi3/rpi3.nix
           ./modules/common.nix
           ./modules/services/miniflux.nix
           ./modules/services/adguardhome.nix
