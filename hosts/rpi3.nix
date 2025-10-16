@@ -8,6 +8,7 @@
   ];
 
   hardware.enableRedistributableFirmware = true;
+  networking.tempAddresses = "enabled";
 
   # Hostname
   networking.hostName = "nixos_rpi3";
