@@ -11,6 +11,7 @@
       CREATE_ADMIN = 1;
       POLLING_SCHEDULER = "entry_frequency";
       POLLING_FREQUENCY = 30;
+      SCHEDULER_ENTRY_FREQUENCY_FACTOR = "1.5";
       BATCH_SIZE = 20;
       WORKER_POOL_SIZE = 4;
       POLLING_LIMIT_PER_HOST = 5;
@@ -25,7 +26,7 @@
     enable = true;
     
     # Use nginx with QUIC/HTTP3 support
-    package = pkgs.nginxQuic;
+    # package = pkgs.nginxQuic;
 
     recommendedTlsSettings = true;
     recommendedProxySettings = true;
