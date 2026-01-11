@@ -39,6 +39,7 @@
           ./modules/services/miniflux.nix
           ./modules/services/adguardhome.nix
           ./modules/services/i2pd.nix
+          ./modules/services/vaultwarden.nix
         ];
       };
     };

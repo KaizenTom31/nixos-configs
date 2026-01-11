@@ -9,4 +9,5 @@ in
   "acme-email.age".publicKeys = systems;
   "rpi3-wireguard-pr.age".publicKeys = systems;
   "rpi3-wireguard-sh.age".publicKeys = systems;
+  "vaultwarden.age".publicKeys = systems;
 }
