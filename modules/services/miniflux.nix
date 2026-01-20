@@ -62,12 +62,15 @@
   networking.firewall.allowedUDPPorts = [ 443 ];
 
 
-  security.acme.acceptTerms = true;
-  security.acme.certs."sh.tomwissing.de" = {
-    email = "noreply@tomwissing.de";
-    domain = "*.sh.tomwissing.de";
-    dnsProvider = "cloudflare";
-    environmentFile = config.age.secrets.cloudflare-dns.path;
+  security.acme = {
+    acceptTerms = true;
+    defaults.profile = "shortlived";
+    certs."sh.tomwissing.de" = {
+      email = "noreply@tomwissing.de";
+      domain = "*.sh.tomwissing.de";
+      dnsProvider = "cloudflare";
+      environmentFile = config.age.secrets.cloudflare-dns.path;
+    };
   };
   users.users.nginx.extraGroups = ["acme"];
 }
