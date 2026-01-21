@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Shared user configuration
   users.users.tom = {
     isNormalUser = true;
