@@ -30,6 +30,15 @@
     fsType = "ext4";
     options = [ "noatime" "nodiratime" "commit=60" ];
   };
+  fileSystems."/mnt/sd-boot" ={
+    device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";
+    fsType = "ext4";
+  };
+
+  fileSystems."/boot" = {
+    device = "/mnt/sd-boot/boot";
+    options = [ "bind" ];
+  };
 
   # Kernel params
   boot.kernelParams = [ "panic=30" "boot.panic_on_fail" ];
@@ -42,7 +51,6 @@
     enable = true;
     memoryPercent = 60;
     algorithm = "lzo-rle";
-    writebackDevice = "/swapfile";
   };
 
   # System services
