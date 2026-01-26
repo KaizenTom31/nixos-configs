@@ -40,7 +40,7 @@
           ./modules/services/adguardhome.nix
           ./modules/services/i2pd.nix
           ./modules/services/vaultwarden.nix
-          ./modules/services/bitocoind.nix
+          ./modules/services/bitcoind.nix
         ];
       };
     };
