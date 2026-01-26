@@ -31,16 +31,23 @@
     options = [ "noatime" "nodiratime" "commit=60" ];
   };
 
-  # Swap
-  swapDevices = [ { device = "/swapfile"; size = 512; } ];
-
   # Kernel params
-  boot.kernelParams = [ "panic=1" "boot.panic_on_fail" ];
+  boot.kernelParams = [ "panic=30" "boot.panic_on_fail" ];
+
+
+  # Swap
+  boot.kernel.sysctl."vm.swappiness" = 10;
+  swapDevices = [ { device = "/swapfile"; size = 1024; } ];
+  zramSwap = {
+    enable = true;
+    memoryPercent = 60;
+    algorithm = "lzo-rle";
+    writebackDevice = "/swapfile";
+  };
 
   # System services
   services.openssh.enable = true;
 
-  zramSwap.enable = true;
   services.fstrim.enable = true;
 
   # Journald in RAM
