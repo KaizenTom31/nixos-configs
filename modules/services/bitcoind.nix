@@ -14,10 +14,23 @@
       blocksonly=1
     '';
   };
+  # timer to start bitcoind unit after a delay
+  systemd.timers.bitcoind-main = {
+    wantedBy = [ "timers.target" ];
+    timerConfig = {
+      OnBootSec = "2min";
+      RandomizedDelaySec = "10min";
+      Unit = "bitcoind-main.service";
+    };
+  };
+
   systemd.services.bitcoind-main = {
-    after = [ "network-online.target" "multi-user.target"];
+    # disable wanted by multiusertarger
+    wantedBy = [];
     serviceConfig = {
       Nice = 10;
     };
   };
+  
+
 }
