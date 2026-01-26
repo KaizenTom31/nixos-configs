@@ -14,4 +14,10 @@
       blocksonly=1
     '';
   };
+  systemd.services.bitcoind-main = {
+    after = [ "network-online.target" "multi-user.target"];
+    serviceConfig = {
+      Nice = 10;
+    };
+  };
 }
