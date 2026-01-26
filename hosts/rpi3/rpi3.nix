@@ -26,7 +26,7 @@
 
   # File system options
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/44444444-4444-4444-8888-888888888888";
+    device = "/dev/disk/by-uuid/9a6ffedb-a027-4ce4-915f-9e4382183442";
     fsType = "ext4";
     options = [ "noatime" "nodiratime" "commit=60" ];
   };

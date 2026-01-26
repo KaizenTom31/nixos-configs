@@ -13,7 +13,7 @@
 
    users.users.tom = {
     packages = with pkgs; [
-      fastfetch
+      fastfetchMinimal
       pyload-ng
       git
     ];
