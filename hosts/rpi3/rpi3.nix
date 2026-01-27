@@ -45,11 +45,10 @@
 
 
   # Swap
-  boot.kernel.sysctl."vm.swappiness" = 10;
-  swapDevices = [ { device = "/swapfile"; size = 1024; } ];
+  boot.kernel.sysctl."vm.swappiness" = 20;
+  swapDevices = [ { device = "/swapfile"; size = 2048; } ];
   zramSwap = {
     enable = true;
-    memoryPercent = 60;
     algorithm = "lzo-rle";
   };
 
@@ -60,8 +59,7 @@
 
   # Journald in RAM
   services.journald = {
-      storage = "volatile";
-      extraConfig = "RuntimeMaxUse=5M";
+      extraConfig = "MaxRetentionSec=1d";
   };
 
   nix.gc = {
