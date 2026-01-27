@@ -45,7 +45,7 @@
 
 
   # Swap
-  boot.kernel.sysctl."vm.swappiness" = 20;
+  boot.kernel.sysctl."vm.swappiness" = 30;
   swapDevices = [ { device = "/swapfile"; size = 2048; } ];
   zramSwap = {
     enable = true;
@@ -62,10 +62,17 @@
       extraConfig = "MaxRetentionSec=1d";
   };
 
-  nix.gc = {
+  nix = let commonServiceSettings = {
     automatic = true;
+    persistent = true;
     dates = "weekly";
-    options = "--delete-older-than 7d";
+    randomizedDelaySec = "1h";
+  };
+  in {
+    gc = commonServiceSettings // {
+      options = "--delete-older-than 7d";
+    };
+    optimise = commonServiceSettings;
   };
 }
 

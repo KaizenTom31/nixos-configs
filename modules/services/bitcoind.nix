@@ -14,12 +14,14 @@
       blocksonly=1
     '';
   };
+
   # timer to start bitcoind unit after a delay
   systemd.timers.bitcoind-main = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
       OnBootSec = "2min";
       RandomizedDelaySec = "10min";
+Persistent = true;
       Unit = "bitcoind-main.service";
     };
   };
@@ -29,8 +31,7 @@
     wantedBy = [];
     serviceConfig = {
       Nice = 10;
+IOSchedulingClass = "idle";
     };
   };
-  
-
-}
+  }
